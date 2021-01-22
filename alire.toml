@@ -8,12 +8,3 @@ maintainers-logins = ["heziode"]
 licenses = ["BSD 2-Clauses"]
 
 website = "https://github.com/Heziode/ada-dotenv"
-tags = [
-    "dotenv",
-    "env",
-    ".env",
-    "environment",
-    "variables",
-    "config",
-    "settings"
-]

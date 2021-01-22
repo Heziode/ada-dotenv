@@ -1,3 +1,3 @@
 package Load_Environment_Variables is
-   procedure Nothing;
+   pragma Elaborate_Body;
 end Load_Environment_Variables;

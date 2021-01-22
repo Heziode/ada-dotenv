@@ -1,0 +1,9 @@
+name = "example"
+description = "Shiny new project"
+version = "0.0.0"
+
+authors = ["Heziode"]
+maintainers = ["Heziode <heziode@protonmail.com>"]
+maintainers-logins = ["heziode"]
+
+executables = ["example"]

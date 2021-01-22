@@ -1,0 +1,37 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 120
+tab_width = 4
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{adb,ads,gpr}]
+indent_size = 3
+
+[Makefile]
+indent_style = tab
+
+[*.haml]
+indent_size = 2
+
+[{*.bash,*.sh,*.zsh}]
+indent_size = 2
+tab_width = 2
+
+[{*.cql,*.cyp,*.cypher}]
+indent_size = 2
+tab_width = 2
+
+[{*.har,*.jsb2,*.jsb3,*.json,.babelrc,.eslintrc,.stylelintrc,bowerrc,jest.config}]
+indent_size = 2
+
+[{*.yaml,*.yml}]
+indent_size = 2

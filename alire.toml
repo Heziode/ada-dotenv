@@ -6,5 +6,5 @@ authors = ["Heziode"]
 maintainers = ["Heziode <heziode@protonmail.com>"]
 maintainers-logins = ["heziode"]
 licenses = ["BSD 2-Clauses"]
-
 website = "https://github.com/Heziode/ada-dotenv"
+tags = ["dotenv", "env", "environment", "variables", "config", "settings"]

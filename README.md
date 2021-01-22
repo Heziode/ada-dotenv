@@ -2,7 +2,7 @@
 
 > This library is a port of [dotenv](https://github.com/motdotla/dotenv) + [dotenv-expand](https://github.com/motdotla/dotenv-expand) in Ada.
 
-Dotenv is a zero-dependency module that loads environment variables from a `.env` file. Storing configuration in the environment separate from code is based on [The Twelve-Factor App](http://12factor.net/config) methodology.
+Dotenv is a zero-dependency library that loads environment variables from a `.env` file. Storing configuration in the environment separate from code is based on [The Twelve-Factor App](http://12factor.net/config) methodology.
 
 [![Alire](https://img.shields.io/endpoint?style=for-the-badge&url=https://alire.ada.dev/badges/dotenv.json)](https://alire.ada.dev/crates/dotenv)
 [![LICENSE](https://img.shields.io/github/license/heziode/ada-dotenv.svg?style=for-the-badge)](LICENSE)
@@ -40,6 +40,8 @@ with Dotenv;
 Dotenv.Config;
 ```
 
+*Note: a way to achieve this is to load environment variable during elaboration. See [example/src/example_3.adb](example/src/example_3.adb)*
+
 Create a `.env` file in the root directory of your project. Add environment-specific variables on new lines in the form of `NAME=VALUE`.
 For example:
 
@@ -61,9 +63,7 @@ Ada.Text_IO.Put_Line ("DB_HOST: " & Ada.Environment_Variables.Value ("DB_HOST"))
 ## Config
 
 `Config` will read your `.env` file, parse the contents, assign it to environment variables.
-All `Config`, `Config_Overwrite` and `Config_Debug` can raise Ada.Directories.Name_Error if no valid path found for environment variable file.
-
-
+All `Config`, `Config_Overwrite`, `Config_Debug` and `Config_Interpolate` can raise **Ada.Directories.Name_Error** if no valid path found for environment variable file.
 
 These procedures can take several parameters, like **Overwrite**, **Debug**, **Interpolation**, **Path**, **File_Form**. See [dotenv.ads](./src/dotenv.ads) for more details.
 
@@ -244,7 +244,7 @@ No. We **strongly** recommend against having a "main" `.env` file and an "enviro
 
 By default, we will not modify any environment variables that have already been set. In particular, if there is a variable in your `.env` file which collides with one that already exists in your environment, then that variable will be skipped. This behavior allows you to override all `.env` configurations with a machine-specific environment, although it is not recommended.
 
-If you want to override an environment variable, you can set the parameter [**Overwrite**](#Overwrite) of `Config`, `Config_Overwrite` or `Config_Debug` to `True`, or by setting the environment variable `DOTENV_CONFIG_FILE_FORM=True`.
+If you want to override an environment variable, you can set the parameter [**Overwrite**](#Overwrite) of `Config`, `Config_Overwrite` to `True`, or by setting the environment variable `DOTENV_CONFIG_OVERWRITE=True`.
 
 ### What about variable expansion/interpolation?
 
@@ -256,6 +256,8 @@ For example, if we have the following environment variables:
 - `HELLO=Hello ${FIRSTNAME} $LASTNAME`
 
 Then the final value of `HELLO` will be "Hello John Doe" if Interpolation is True.
+
+If you want to interpolate an environment variable, you can set the parameter [**Interpolation**](#Interpolation) of `Config`, `Config_Interpolation` to `True`, or by setting the environment variable `DOTENV_CONFIG_INTERPOLATION=True`.
 
 ## Contributing Guide
 
